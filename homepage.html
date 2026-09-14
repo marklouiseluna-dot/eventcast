@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventCast — Smart Event Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!--NAVBAR-->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="homepage.html" class="nav-logo">🎫 EventCast</a>
+            <div class="nav-links">
+                <a href="homepage.html" class="active">Home</a>
+                <a href="register.html">Register</a>
+                <a href="#events">Events</a>
+                <a href="#about">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Find your next event.<br>Arrive prepared.</h1>
+            <p class="hero-subtitle">
+                EventCast helps you register for events in seconds and sends you a confirmation 
+                with a weather-aware advisory — so you always know what to bring.
+            </p>
+            <div class="hero-actions">
+                <a href="#events" class="btn btn-primary">Browse Events</a>
+                <a href="register.html" class="btn btn-secondary">Register Now</a>
+            </div>
+        </div>
+    </header>
+
+    <!--FEATURES-->
+    <section class="features">
+        <h2>Why EventCast?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Instant Confirmation</h3>
+                <p>Get your registration confirmation PDF delivered to your inbox within seconds.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌤️</div>
+                <h3>Weather-Aware</h3>
+                <p>Every confirmation includes a personalized weather advisory for your event's location.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Free to Use</h3>
+                <p>No fees, no sign-up required. Just pick an event, register, and show up prepared.</p>
+            </div>
+        </div>
+    </section>
+
+    <!--EVENTS (populated by JS)-->
+    <section class="events" id="events">
+        <div class="section-header">
+            <h2>Upcoming Events</h2>
+            <p>Pick an event and register in under a minute.</p>
+        </div>
+
+        <div class="events-grid" id="eventsGrid">
+            <!-- Cards will be inserted here by JavaScript -->
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-content">
+            <h2>About EventCast</h2>
+            <p>
+                EventCast is a lightweight event registration platform built for small organizers — 
+                schools, clubs, community centers, and independent planners who need a simple way 
+                to receive registrations without paying for expensive software.
+            </p>
+            <p>
+                Every registration automatically generates a personalized confirmation document 
+                that includes a weather forecast and a preparation advisory, so attendees arrive 
+                ready for whatever the sky brings.
+            </p>
+        </div>
+    </section>
+
+    <!--FOOTER-->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>© 2026 EventCast — Smart Event Registration</p>
+            <p class="footer-sub">Built with Google Apps Script, OpenWeatherMap, and Netlify.</p>
+        </div>
+    </footer>
+
+    <!--SCRIPTS-->
+    <script src="events.js"></script>
+    <script>
+        // Render event cards dynamically from EVENTS
+        const grid = document.getElementById("eventsGrid");
+
+        EVENTS.forEach(event => {
+            const card = document.createElement("div");
+            card.className = "event-card";
+
+            card.innerHTML = `
+                <div class="event-banner" style="background-image: url('${event.image}');">
+                    <span class="event-badge">${event.badge}</span>
+                </div>
+                <div class="event-body">
+                    <h3>${event.name}</h3>
+                    <p class="event-meta">📍 ${event.location}</p>
+                    <p class="event-meta">📅 ${event.displayDate}</p>
+                    <p class="event-desc">${event.description}</p>
+                    <a href="register.html?event=${encodeURIComponent(event.name)}" class="btn btn-card">Register →</a>
+                </div>
+            `;
+
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+</html>
