@@ -98,7 +98,7 @@ function doPost(e) {
     statusHeader.setBold(true);
     statusHeader.setFontSize(12);
 
-    body.appendParagraph("✅ Confirmed — Free Registration");
+    body.appendParagraph("✅ Confirmed");
 
     doc.saveAndClose();
 
@@ -182,5 +182,5 @@ function getWeatherAdvisory(condition, temp, wind) {
   }
 
   // DEFAULT FALLBACK
-  return "🌍 The weather forecast will be available within 5 days of the event. Check your email closer to the date for an updated forecast. In the meantime, prepare for typical seasonal conditions.";
+  return "📅 The weather forecast will be available within 5 days of the event. Check your email closer to the date for an updated forecast. In the meantime, prepare for typical seasonal conditions.";
 }
