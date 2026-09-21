@@ -182,5 +182,5 @@ function getWeatherAdvisory(condition, temp, wind) {
   }
 
   // DEFAULT FALLBACK
-  return "🌍 Weather conditions are mixed. Check the forecast again before the event.";
+  return "🌍 The weather forecast will be available within 5 days of the event. Check your email closer to the date for an updated forecast. In the meantime, prepare for typical seasonal conditions.";
 }
